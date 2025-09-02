@@ -1,14 +1,14 @@
 {
   "3": {
     "inputs": {
-      "seed": 1,
+      "seed": 0,
       "steps": 20,
       "cfg": 1,
       "sampler_name": "euler",
       "scheduler": "simple",
       "denoise": 1,
       "model": [
-        "10",
+        "21",
         0
       ],
       "positive": [
@@ -56,15 +56,6 @@
       "title": "VAE解码"
     }
   },
-  "10": {
-    "inputs": {
-      "unet_name": "flux1-dev-Q8_0.gguf"
-    },
-    "class_type": "UnetLoaderGGUF",
-    "_meta": {
-      "title": "Unet Loader (GGUF)"
-    }
-  },
   "11": {
     "inputs": {
       "vae_name": "ae.safetensors"
@@ -72,18 +63,6 @@
     "class_type": "VAELoader",
     "_meta": {
       "title": "加载VAE"
-    }
-  },
-  "12": {
-    "inputs": {
-      "clip_name1": "clip_l.safetensors",
-      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
-      "type": "flux",
-      "device": "default"
-    },
-    "class_type": "DualCLIPLoader",
-    "_meta": {
-      "title": "双CLIP加载器"
     }
   },
   "15": {
@@ -134,6 +113,21 @@
     "class_type": "DualCLIPLoaderGGUF",
     "_meta": {
       "title": "DualCLIPLoader (GGUF)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "model_path": "svdq-int4_r32-flux.1-dev.safetensors",
+      "cache_threshold": 0,
+      "attention": "nunchaku-fp16",
+      "cpu_offload": "auto",
+      "device_id": 0,
+      "data_type": "bfloat16",
+      "i2f_mode": "enabled"
+    },
+    "class_type": "NunchakuFluxDiTLoader",
+    "_meta": {
+      "title": "Nunchaku FLUX DiT Loader"
     }
   }
 }
